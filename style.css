@@ -1,0 +1,696 @@
+/* ============================================
+   DevConf 2026 - Landing Page Styles
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    --color-primary: #4f46e5;
+    --color-primary-dark: #4338ca;
+    --color-primary-light: #818cf8;
+    --color-accent: #7c3aed;
+    --color-bg-dark: #0f0f23;
+    --color-bg-light: #f8fafc;
+    --color-bg-white: #ffffff;
+    --color-text-dark: #1e293b;
+    --color-text-body: #475569;
+    --color-text-light: #94a3b8;
+    --color-text-white: #ffffff;
+    --color-border: #e2e8f0;
+    --color-featured-bg: #1e1b4b;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    background-color: var(--color-bg-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+}
+
+.btn-hero {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    padding: 14px 36px;
+    font-size: 15px;
+    border-radius: var(--radius-sm);
+}
+
+.btn-hero:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(79, 70, 229, 0.4);
+}
+
+/* ============================================
+   Navbar
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.logo img {
+    height: 32px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.nav-menu a {
+    color: var(--color-text-light);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--color-text-white);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary-light);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('./images/banner.jpg') center center / cover no-repeat;
+    text-align: center;
+    padding: 120px 24px 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(15, 15, 35, 0.85) 0%,
+        rgba(15, 15, 35, 0.75) 50%,
+        rgba(15, 15, 35, 0.9) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: var(--color-text-white);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--color-primary-light);
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+}
+
+/* ============================================
+   Section Commons
+   ============================================ */
+.section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-body);
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* ============================================
+   Speakers Section
+   ============================================ */
+.speakers {
+    padding: 100px 0;
+    background-color: var(--color-bg-white);
+}
+
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.speaker-card {
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.speaker-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.speaker-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-bg-light);
+}
+
+.speaker-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.speaker-card:hover .speaker-image img {
+    transform: scale(1.03);
+}
+
+.speaker-track {
+    display: inline-block;
+    margin: 20px 20px 8px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    background-color: rgba(79, 70, 229, 0.08);
+    border-radius: 100px;
+}
+
+.speaker-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0 20px 4px;
+    letter-spacing: -0.01em;
+}
+
+.speaker-title {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0 20px 20px;
+    font-weight: 400;
+}
+
+/* ============================================
+   Pricing Section
+   ============================================ */
+.pricing {
+    padding: 100px 0;
+    background-color: var(--color-bg-light);
+}
+
+.pricing .section-title {
+    margin-bottom: 8px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+    align-items: start;
+}
+
+.pricing-card {
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.pricing-card.featured {
+    background-color: var(--color-featured-bg);
+    border-color: transparent;
+    box-shadow: var(--shadow-xl);
+    transform: scale(1.02);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+.plan-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-light);
+    margin-bottom: 12px;
+}
+
+.pricing-card.featured .plan-label {
+    color: var(--color-primary-light);
+}
+
+.plan-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+}
+
+.pricing-card.featured .plan-price {
+    color: var(--color-text-white);
+}
+
+.plan-price span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    margin-left: 4px;
+}
+
+.pricing-card.featured .plan-price span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.plan-features {
+    margin-bottom: 32px;
+    flex-grow: 1;
+}
+
+.plan-features li {
+    padding: 8px 0;
+    font-size: 0.875rem;
+    color: var(--color-text-body);
+    position: relative;
+    padding-left: 20px;
+}
+
+.pricing-card.featured .plan-features li {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.plan-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+
+.pricing-card.featured .plan-features li::before {
+    background-color: var(--color-primary-light);
+}
+
+.pricing-card .btn {
+    width: 100%;
+}
+
+.pricing-card.featured .btn-primary {
+    background-color: var(--color-primary);
+}
+
+.pricing-card.featured .btn-primary:hover {
+    background-color: var(--color-primary-light);
+}
+
+/* ============================================
+   Schedule Section (AI Challenge)
+   ============================================ */
+.schedule-section {
+    padding: 100px 0;
+    background-color: var(--color-bg-white);
+}
+
+.schedule-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+}
+
+.schedule-day {
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    transition: var(--transition);
+}
+
+.schedule-day:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--color-primary-light);
+}
+
+.day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.day-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    background-color: rgba(79, 70, 229, 0.1);
+    padding: 4px 12px;
+    border-radius: 100px;
+}
+
+.day-date {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.day-theme {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.day-events li {
+    padding: 10px 0;
+    font-size: 0.875rem;
+    color: var(--color-text-body);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.day-events li:last-child {
+    border-bottom: none;
+}
+
+.event-time {
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 44px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    background-color: var(--color-bg-dark);
+    padding: 60px 0 32px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.footer-logo img {
+    height: 28px;
+    width: auto;
+    opacity: 0.9;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--color-text-light);
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    transform: translateY(-2px);
+}
+
+.footer-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin-bottom: 24px;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    letter-spacing: 0.02em;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 992px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pricing-card.featured {
+        transform: none;
+        order: -1;
+    }
+
+    .pricing-card.featured:hover {
+        transform: translateY(-4px);
+    }
+
+    .schedule-timeline {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        height: 64px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .hero {
+        padding: 100px 20px 60px;
+        min-height: auto;
+        min-height: 90vh;
+    }
+
+    .speakers-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 40px;
+    }
+
+    .speakers,
+    .pricing,
+    .schedule-section {
+        padding: 64px 0;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .pricing-card {
+        padding: 28px 20px;
+    }
+
+    .schedule-day {
+        padding: 24px;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    .navbar,
+    .hero,
+    .footer {
+        display: none;
+    }
+
+    .speakers,
+    .pricing,
+    .schedule-section {
+        padding: 20px 0;
+    }
+}
